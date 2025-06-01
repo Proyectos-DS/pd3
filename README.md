@@ -110,6 +110,8 @@ Ejecuta:
 
 
 <img src="imgs/paso4.png" >
+
+
 ### Paso 5 – Arrays en Bash
 
 ```bash
