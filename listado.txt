@@ -1,0 +1,9 @@
+total 44
+-rwxrwxr-x 1 dirac dirac    42 Jun  1 12:46 hello.sh
+-rw-rw-r-- 1 dirac dirac     0 Jun  1 14:00 listado.txt
+-rwxrwxr-x 1 dirac dirac   229 Jun  1 14:00 pipes_redir.sh
+-rw-rw-r-- 1 dirac dirac 20049 May  3 23:02 README.md
+-rwxrwxr-x 1 dirac dirac   243 Jun  1 13:14 script_arrays.sh
+-rwxrwxr-x 1 dirac dirac   334 Jun  1 13:39 script_expansiones.sh
+-rwxrwxr-x 1 dirac dirac   133 Jun  1 13:08 script_params.sh
+-rwxrwxr-x 1 dirac dirac   147 Jun  1 12:59 variables.sh
