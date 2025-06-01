@@ -68,7 +68,7 @@ dirac@ubuntu:~/Documents/DS/pd3$
    ./hello.sh
    ```
 
-![[paso2.png]]
+<img src="imgs/paso2.png" >
 
 ### Paso 3 – Asignación de variables
 
@@ -88,7 +88,7 @@ echo "Entorno: $ENV"
 
 **Salida**:
 
-![[paso3.png]]
+<img src="imgs/paso3.png" >
 
 ### Paso 4 – Parámetros posicionales
 
@@ -109,7 +109,7 @@ Ejecuta:
 ```
 
 
-![[paso4.png]]
+<img src="imgs/paso4.png" >
 ### Paso 5 – Arrays en Bash
 
 ```bash
@@ -126,7 +126,7 @@ declare -A EDADES=([Alice]=28 [Kapu]=35)
 echo "Kapu tiene ${EDADES[Kapu]} años"
 ```
 
-![[paso5.png]]
+<img src="imgs/paso5.png" >
 
 ### Paso 6 – Expansiones
 
@@ -156,7 +156,7 @@ echo "${txt%.tar.gz}"        # quita sufijo
 ```
 
 
-![[paso6.png]]
+<img src="imgs/paso6.png" >
 
 
 **Tabla Resumen de Símbolos**  
@@ -196,7 +196,7 @@ diff <(sort file1) <(sort file2)
 ```bash
 #!/usr/bin/env bash
 num=$1
-if [[ -z $num ]]; then
+if [[ -z $num " >; then
   echo "Pasa un número"
   exit 1
 elif (( num % 2 == 0 )); then
@@ -206,7 +206,7 @@ else
 fi
 ```
 
-![[paso8-if.png]]
+<img src="imgs/paso8-if.png" >
 
 #### case
 
@@ -222,7 +222,7 @@ esac
 ```
 
 
-![[paso8-case.png]]
+<img src="imgs/paso8-case.png" >
 
 ### Paso 9 – Bucles
 
@@ -238,7 +238,7 @@ count=3
 while (( count>0 )); do echo "$count"; ((count--)); done
 
 # until
-until [[ -f resultado.txt ]]; do sleep 1; done
+until [[ -f resultado.txt " >; do sleep 1; done
 echo "resultado.txt listo"
 ```
 
@@ -285,7 +285,7 @@ trap 'echo "Error en línea $LINENO"; exit 1' ERR
 
 n=$(( RANDOM % 100 ))
 
-if [[ n -eq 42 ]]; then
+if [[ n -eq 42 " >; then
    echo "Algo esta pasando!"
    >&2 echo "El error fue por usar numero magicos"
    exit 1
@@ -313,7 +313,7 @@ eliminará los archivos que `ls` lista.
 #!/usr/bin/env bash
 email="$1"
 re='^[[:alnum:]_.+-]+@[[:alnum:]-]+\.[[:alnum:].-]+$'
-if [[ $email =~ $re ]]; then
+if [[ $email =~ $re " >; then
   echo "Email válido"
   echo "Usuario: ${BASH_REMATCH[1]}"  # primer grupo
 else
@@ -345,7 +345,7 @@ cat logs.txt | python3 extract_emails.py
 branch=$(git rev-parse --abbrev-ref HEAD)
 # solo: feature/XYZ-123-descripcion o hotfix/XYZ-123
 re='^(feature|hotfix)\/[A-Z]{2,5}-[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$'
-if [[ ! $branch =~ $re ]]; then
+if [[ ! $branch =~ $re " >; then
   echo "Nombre de rama inválido: $branch"
   echo "Formato correcto: feature/ABC-123-descripcion"
   exit 1
@@ -373,7 +373,7 @@ fi
 tag="$1"
 # vX.Y.Z o X.Y.Z-prerelease+metadata
 re='^v?[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
-if [[ ! $tag =~ $re ]]; then
+if [[ ! $tag =~ $re " >; then
   echo "Tag inválido: $tag"
   echo "Formato semver: 1.2.3, v1.2.3-beta+exp"
   exit 1
@@ -576,15 +576,15 @@ condicionales, bucles, funciones y depuración vistos en el tutorial.
 3. Utiliza un parámetro posicional (`$1`) para determinar la acción:  
 4. Si el usuario pasa `--branches`, invocar la función `limpiar_ramas`.  
 5. En `limpiar_ramas`, solicita al usuario un patrón de expresión regular para filtrar ramas locales (por ejemplo, `feature/.*` o `bugfix/.*`).  
-6. Valida la entrada con `[[ $patron =~ ^[[:alnum:]_/.-]+$ ]]`; en caso de fallo, mostrar un error y salir.  
+6. Valida la entrada con `[[ $patron =~ ^[[:alnum:]_/.-]+$ " >`; en caso de fallo, mostrar un error y salir.  
 7. Lista las ramas locales que coincidan usando `git branch | grep -E "$patron"` y almacenar el resultado en un array Bash.  
 8. Si el array está vacío, informa "No hay ramas que coincidan con $patron" y regresar al menú.  
 9. Itera sobre el array con un bucle `for` y, para cada rama, preguntar “¿Eliminar rama <nombre\>? (s/n)”.  
-10. Lee la respuesta con `read -r` y usa un condicional `if [[ $respuesta =~ ^[sS]$ ]]` para eliminarla (`git branch -D`).  
+10. Lee la respuesta con `read -r` y usa un condicional `if [[ $respuesta =~ ^[sS]$ " >` para eliminarla (`git branch -D`).  
 11. Tras procesar locales, lista ramas remotas coincidentes (`git branch -r | grep -E "$patron"`), y repetir el mismo proceso (usando `git push origin --delete`).  
 12. Crea una función `gestionar_stashes` que, al recibir `--stashes`, liste los stashes con índices (`git stash list | nl -w2 -s'. '`), capturándolo en una variable.  
 13. Solicita al usuario una lista de índices separados por espacios (por ejemplo, “0 2 4”).  
-14. Valida cada índice con `[[ $i =~ ^[0-9]+$ ]]`; si algún índice no es válido, abortar con mensaje de error.  
+14. Valida cada índice con `[[ $i =~ ^[0-9]+$ " >`; si algún índice no es válido, abortar con mensaje de error.  
 15. Convierte la línea de índices en un array Bash y recorrerlo con un `for`.  
 16. Para cada índice, pide la confirmación antes de aplicar (`git stash apply stash@{$i}`) o eliminar (`git stash drop stash@{$i}`), según la opción inicial (push o pop).  
 17. Añade una función `backup_reflog` que, al pasar `--backup`, guarde el reflog en un archivo nombrado `reflog_$(date +%Y%m%d_%H%M%S).log`.  
